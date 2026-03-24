@@ -241,7 +241,12 @@ form textarea {
 }
 input[type="submit"] {
 	background-color: #BEB45A;
-	padding: .5em 1em
+	padding: .5em 1em;
+	cursor: pointer;
+}
+.carousel-control-prev,
+.carousel-control-next {
+	background-color: rgba(0, 0, 0, 0.7);
 }
 
 @media all and (max-width: 1180px) {
