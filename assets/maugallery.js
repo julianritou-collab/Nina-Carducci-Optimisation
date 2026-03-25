@@ -113,14 +113,15 @@
       }
     },
     openLightBox(element, lightboxId) {
-      $(`#${lightboxId}`)
+      const $lightbox = $(`#${lightboxId}`);
+      $lightbox
         .find(".lightboxImage")
         .attr("src", element.attr("src"));
-      $(`#${lightboxId}`)
+      $lightbox
         .find(".lightboxImage")
         .attr("alt", element.attr("alt") || "Contenu de l'image affichée dans la modale au clique"); 
-
-      $(`#${lightboxId}`).modal("toggle");
+      $lightbox.data("lastTrigger", element);
+      $lightbox.modal("show");
     },
     nextImage( reverseNavigation) {
       let activeImage = null;
@@ -168,8 +169,9 @@
       $(".lightboxImage").attr("alt", $(next).attr("alt") || "Contenu de l'image affichée dans la modale au clique"); 
     },
     createLightBox(gallery, lightboxId, navigation) {
+      const resolvedLightboxId = lightboxId ? lightboxId : "galleryLightbox";
       gallery.append(`<div class="modal fade" id="${
-        lightboxId ? lightboxId : "galleryLightbox"
+        resolvedLightboxId
       }" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -189,6 +191,19 @@
                     </div>
                 </div>
             </div>`);
+      const $lightbox = $(`#${resolvedLightboxId}`);
+      $lightbox.on("hide.bs.modal", function() {
+        const activeElement = document.activeElement;
+        if (activeElement && this.contains(activeElement) && typeof activeElement.blur === "function") {
+          activeElement.blur();
+        }
+      });
+      $lightbox.on("hidden.bs.modal", function() {
+        const lastTrigger = $(this).data("lastTrigger");
+        if (lastTrigger && lastTrigger.length) {
+          lastTrigger.trigger("focus");
+        }
+      });
     },
     showItemTags(gallery, position, tags) {
       var tagItems =
