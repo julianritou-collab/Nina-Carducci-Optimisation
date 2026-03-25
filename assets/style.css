@@ -74,24 +74,24 @@ body {
 #about-me {
 	flex: 2
 }
-.about-me__title {
+.about-me-title {
 	margin-top: 1em;
 	margin-bottom: 60px;
 	font-size: 30px;
 }
-.about-me__introduction {
+.about-me-introduction {
 	font-family: 'Spectral';
 	font-weight: 800;
 	font-style: italic;
 	width: 60%;
+	font-size: 1rem;
+	line-height: 1.2;
+	margin-top: 0;
+    margin-bottom: 0.5rem;
 }
-#about-me p {
+.about-me-text {
 	width: 80%;
 	font-size: 14px;
-}
-
-#gallery {
-	/*	min-height: 100vh; */
 }
 .title{
 	text-align: center;
@@ -150,13 +150,13 @@ body {
 	margin: auto;
 	padding-block: 3em;
 }
-.quote__text {
+.quote-text {
 	font-family: Spectral;
 	font-style: italic;
 	font-weight: 300;
-
+	font-size: 22px;
 }
-.quote__author {
+.quote-author {
 	font-family: Spectral;
 	font-weight: 800;
 	font-size: 22px;
@@ -263,11 +263,12 @@ input[type="submit"] {
 	#about, #contact .container {
 		align-items: center;
 	}
-	.about-me__title {
+	.about-me-title {
 		margin-top: 0;
 		margin-bottom: 1em;
 	}
-	#about-me h6, #about-me p {
+	.about-me-introduction,
+	.about-me-text {
 		width: 100%;
 	}
 }
@@ -289,7 +290,7 @@ input[type="submit"] {
 		left: 0;
 		z-index: -1;
 	}
-	.about-me__title{
+	.about-me-title{
 		text-align: center;
 		margin-top: 1em;
 	}
