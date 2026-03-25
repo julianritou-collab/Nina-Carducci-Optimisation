@@ -56,6 +56,12 @@
         return;
       }
     });
+    $(".gallery-item").on("keydown", function(e) {
+      if ((e.key === "Enter" || e.key === " ") && options.lightBox && $(this).prop("tagName") === "IMG") {
+        e.preventDefault();
+        $.fn.mauGallery.methods.openLightBox($(this), options.lightboxId);
+      }
+    });
     $(".gallery").on("click", ".nav-link", $.fn.mauGallery.methods.filterByTag);
     $(".gallery").on("click", ".mg-prev", () =>
       $.fn.mauGallery.methods.nextImage( true)
@@ -110,6 +116,8 @@
     responsiveImageItem(element) {
       if (element.prop("tagName") === "IMG") {
         element.addClass("img-fluid");
+        element.attr("tabindex", "0");
+        element.attr("role", "button");
       }
     },
     openLightBox(element, lightboxId) {

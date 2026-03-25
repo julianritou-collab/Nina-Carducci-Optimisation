@@ -126,6 +126,9 @@ body {
 	object-fit: cover;
 	padding: .5em;
 }
+.gallery-item:focus {
+	opacity: 0.8;
+}	
 .gallery-item:hover {
 	opacity: 0.8;
 	cursor: pointer;
