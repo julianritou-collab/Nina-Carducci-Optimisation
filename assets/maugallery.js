@@ -118,7 +118,7 @@
         .attr("src", element.attr("src"));
       $(`#${lightboxId}`)
         .find(".lightboxImage")
-        .attr("alt", element.attr("alt") || "Contenu de l'image affichée dans la modale au clique");
+        .attr("alt", element.attr("alt") || "Contenu de l'image affichée dans la modale au clique"); 
 
       $(`#${lightboxId}`).modal("toggle");
     },
@@ -129,7 +129,7 @@
           activeImage = $(this);
         }
       });
-      let activeTag = $(".tags-bar span.active-tag").data("images-toggle");
+      let activeTag = $(".tags-bar .active-tag").data("images-toggle") || "all";
       let imagesCollection = [];
       if (activeTag === "all") {
         $(".item-column").each(function() {
@@ -176,13 +176,13 @@
                         <div class="modal-body">
                             ${
                               navigation
-                                ? '<div class="mg-prev" style="cursor:pointer;position:absolute;top:50%;left:-15px;background:white;"><</div>'
+                                ? '<button class="mg-prev" aria-label="image précédente" style="cursor:pointer;position:absolute;top:50%;left:-15px;background:white;">&lt;</button>'
                                 : '<span style="display:none;" />'
                             }
                             <img class="lightboxImage img-fluid" alt="Contenu de l'image affichée dans la modale au clique"/>
                             ${
                               navigation
-                                ? '<div class="mg-next" style="cursor:pointer;position:absolute;top:50%;right:-15px;background:white;}">></div>'
+                                ? '<button class="mg-next" aria-label="image suivante" style="cursor:pointer;position:absolute;top:50%;right:-15px;background:white;">&gt;</button>'
                                 : '<span style="display:none;" />'
                             }
                         </div>

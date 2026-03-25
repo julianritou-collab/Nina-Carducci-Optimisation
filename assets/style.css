@@ -126,10 +126,14 @@ body {
 	object-fit: cover;
 	padding: .5em;
 }
+.gallery-item:hover {
+	opacity: 0.8;
+	cursor: pointer;
+}
 .mg-prev, .mg-next {
 	width: 30px;
 	height: 30px;
-	border-radius: 00%;
+	border: none;
 	justify-content: center;
 	align-items: center;
 	display: flex;
