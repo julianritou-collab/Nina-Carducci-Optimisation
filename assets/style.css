@@ -17,6 +17,9 @@ body {
 	padding-block: 30px;
 	align-items: center;
 }
+section[id]{
+	scroll-margin-top: 98px;
+}
 
 .top-header .name {
 	font-size: 26px;
@@ -347,6 +350,9 @@ input[type="submit"] {
 }
 
 @media all and (max-width: 650px) {
+	section[id]{
+		scroll-margin-top: 148px;
+	}
 	.top-header {
 		flex-direction: column;
 		padding-inline: 0;
