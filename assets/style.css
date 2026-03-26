@@ -40,6 +40,8 @@ body {
 
 .social-link img {
 	width: 20px;
+	height: auto;
+	display: block;
 }
 
 #about {
@@ -69,7 +71,13 @@ body {
 
 .picture img {
 	width: 100%;
+	height: auto;
+	display: block;
 
+}
+
+#slider .carousel-item img {
+	height: auto;
 }
 #about-me {
 	flex: 2
