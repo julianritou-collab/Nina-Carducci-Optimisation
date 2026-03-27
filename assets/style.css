@@ -277,6 +277,12 @@ input[type="submit"] {
 	cursor: pointer;
 }
 
+.modal .lightboxImage {
+	width: 100%;
+	height: auto;
+	display: block;
+}
+
 @media all and (max-width: 1180px) {
 	.picture {
 		flex : 2;
