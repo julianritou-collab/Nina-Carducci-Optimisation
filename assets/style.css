@@ -128,6 +128,9 @@ section[id]{
 .nav-pills .nav-link {
 	color: #000
 }
+.tags-bar .nav-link {
+	cursor: pointer;
+}
 .item-column {
 	position: relative;
 	margin-bottom: 0 !important;
@@ -271,6 +274,7 @@ input[type="submit"] {
 .carousel-control-prev,
 .carousel-control-next {
 	background-color: rgba(0, 0, 0, 0.7);
+	cursor: pointer;
 }
 
 @media all and (max-width: 1180px) {
