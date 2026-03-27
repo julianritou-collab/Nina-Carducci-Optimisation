@@ -25,17 +25,66 @@
     return { prevented: event.isDefaultPrevented() };
   }
 
+  function getFocusableElements(container) {
+    var selector = [
+      'a[href]',
+      'button:not([disabled])',
+      'input:not([disabled])',
+      'textarea:not([disabled])',
+      'select:not([disabled])',
+      '[tabindex]:not([tabindex="-1"])'
+    ].join(',');
+
+    return Array.prototype.slice.call(container.querySelectorAll(selector)).filter(function(element) {
+      return !element.hasAttribute('disabled') && element.getAttribute('aria-hidden') !== 'true' && element.offsetParent !== null;
+    });
+  }
+
   function Modal(element) {
     this.element = element;
     this.isShown = false;
     this.lastFocused = null;
+    this.hadTabIndex = element.hasAttribute('tabindex');
     this.onKeydown = this.onKeydown.bind(this);
     this.onBackdropClick = this.onBackdropClick.bind(this);
   }
 
+  Modal.prototype.focusInitialElement = function() {
+    var focusable = getFocusableElements(this.element);
+    var target = focusable[0] || this.element;
+    target.focus();
+  };
+
   Modal.prototype.onKeydown = function(event) {
     if (event.key === 'Escape') {
       this.hide();
+      return;
+    }
+
+    if (event.key !== 'Tab') {
+      return;
+    }
+
+    var focusable = getFocusableElements(this.element);
+    if (!focusable.length) {
+      event.preventDefault();
+      this.element.focus();
+      return;
+    }
+
+    var first = focusable[0];
+    var last = focusable[focusable.length - 1];
+    var active = document.activeElement;
+
+    if (event.shiftKey && (active === first || active === this.element)) {
+      event.preventDefault();
+      last.focus();
+      return;
+    }
+
+    if (!event.shiftKey && active === last) {
+      event.preventDefault();
+      first.focus();
     }
   };
 
@@ -64,10 +113,14 @@
     this.element.removeAttribute('aria-hidden');
     this.element.setAttribute('aria-modal', 'true');
     this.element.setAttribute('role', 'dialog');
+    if (!this.hadTabIndex) {
+      this.element.setAttribute('tabindex', '-1');
+    }
     document.body.classList.add('modal-open');
 
     window.requestAnimationFrame(function() {
       this.element.classList.add('show');
+      this.focusInitialElement();
       dispatchJqueryEvent(this.element, 'shown.bs.modal', {
         relatedTarget: relatedTarget || null
       });
@@ -95,6 +148,9 @@
       this.element.setAttribute('aria-hidden', 'true');
       this.element.removeAttribute('aria-modal');
       this.element.removeAttribute('role');
+      if (!this.hadTabIndex) {
+        this.element.removeAttribute('tabindex');
+      }
       document.body.classList.remove('modal-open');
       dispatchJqueryEvent(this.element, 'hidden.bs.modal');
 
