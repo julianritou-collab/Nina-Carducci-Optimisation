@@ -27,61 +27,53 @@
 	<script type="application/ld+json">
 	{
 		"@context": "https://schema.org",
-		"@type": "ProfessionalService",
-		"@id": "https://julianritou-collab.github.io/Nina-Carducci-Optimisation/#business",
-		"name": "Nina Carducci",
-		"description": "Photographe professionnelle à Bordeaux, se déplace en Île-de-France pour mariages, portraits, corporate et événements.",
-		"mainEntityOfPage": "https://julianritou-collab.github.io/Nina-Carducci-Optimisation/",
+		"@type": "WebPage",
 		"inLanguage": "fr-FR",
-		"url": "https://julianritou-collab.github.io/Nina-Carducci-Optimisation/",
-		"image": "https://julianritou-collab.github.io/Nina-Carducci-Optimisation/assets/images/nina-social.jpg",
-		"priceRange": "€50 - €400",
-		"email": "contact@nina-carducci.com",
-		"telephone": "+33 5 56 67 78 89",
-		"contactPoint": [
-			{
-				"@type": "ContactPoint",
-				"telephone": "+33 5 56 67 78 89",
-				"contactType": "customer service",
-				"areaServed": "FR",
-				"availableLanguage": [
-					"fr"
-				]
-			}
-		],
-		"openingHoursSpecification": [
-			{
-				"@type": "OpeningHoursSpecification",
-				"dayOfWeek": [
-					"Monday",
-					"Tuesday",
-					"Wednesday",
-					"Thursday",
-					"Friday"
-				],
-				"opens": "10:00",
-				"closes": "19:00"
-			}
-		],
-		"areaServed": [
-			{
-				"@type": "City",
-				"name": "Bordeaux"
-			},
-			{
-				"@type": "AdministrativeArea",
-				"name": "Île-de-France"
-			}
-		],
-		"sameAs": [
-			"https://www.instagram.com/ninacarducci.photo/?hl=fr"
-		],
-		"address": {
+		"mainEntity": {
+			"@type": "ProfessionalService",
+			"@additionalType": "https://schema.org/Photographer",
+			"@id": "https://julianritou-collab.github.io/Nina-Carducci-Optimisation/#business",
+			"name": "Nina Carducci",
+			"description": "Photographe professionnelle à Bordeaux, se déplace également à Paris et en Île-de-France, spécialisée en mariages, portraits et événements.",
+			"url": "https://julianritou-collab.github.io/Nina-Carducci-Optimisation/",
+			"image": "https://julianritou-collab.github.io/Nina-Carducci-Optimisation/assets/images/nina-social.jpg",
+			"priceRange": "€50 - €400",
+			"telephone": "+33 5 56 67 78 89",
+			"email": "contact@nina-carducci.com",
+			"address": {
 			"@type": "PostalAddress",
 			"streetAddress": "68 avenue Alsace-Lorraine",
 			"postalCode": "33200",
 			"addressLocality": "Bordeaux",
 			"addressCountry": "FR"
+			},
+			"geo": {
+			"@type": "GeoCoordinates",
+			"latitude": 44.8378,
+			"longitude": -0.5792
+			},
+			"areaServed": [
+			{"@type": "City", "name": "Bordeaux"},
+			{"@type": "AdministrativeArea", "name": "Île-de-France"}
+			],
+			"openingHoursSpecification": [
+			{
+				"@type": "OpeningHoursSpecification",
+				"dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+				"opens": "10:00",
+				"closes": "19:00"
+			}
+			],
+			"sameAs": ["https://www.instagram.com/ninacarducci.photo/?hl=fr"],
+			"hasOfferCatalog": {
+			"@type": "OfferCatalog",
+			"name": "Prestations photo",
+			"itemListElement": [
+				{"@type": "Offer","itemOffered":{"@type":"Service","name":"Shooting photo"}},
+				{"@type": "Offer","itemOffered":{"@type":"Service","name":"Album photos"}},
+				{"@type": "Offer","itemOffered":{"@type":"Service","name":"Retouches"}}
+			]
+			}
 		}
 	}
 	</script>
